@@ -71,9 +71,13 @@
 
 #header-text {
   padding-top:15px;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
   font-family: var(--main-font);
   font-size: 20px;
   color: var(--blue-2);
   text-align: left;
+}
+
+#join-btn-header {
+  margin-bottom: 100px;
 }
