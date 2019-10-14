@@ -1,3 +1,43 @@
-h1 {
-    font-size: 50px;
+
+/* blue-1 being the lightest */
+:root {
+ --blue-5: #070b17;
+ --blue-4: #3150a5;
+ --blue-3: #4773ec;
+ --blue-2: #7e9df1;
+ --blue-1: #c7d5f9;
+ --main-white: #e3e3e3;
+ --dark-white: #b5b5b5;
 }
+
+.navbar {
+  background-color: var(--blue-5);
+}
+
+#brand-name:hover {
+  color: var(--dark-white);
+}
+
+
+.nav-link,
+.navbar-brand {
+  color: var(--main-white);
+  cursor: pointer;
+  font-family: 'Titillium Web', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.nav-link {
+  margin-right: 1em !important;
+}
+
+.nav-link:hover {
+  color: var(--dark-white);
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+

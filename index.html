@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Agon</title>
+        <title>Agon - Your personal trainer</title>
         <link rel="stylesheet" href="static/css/styles.css">
+        <link rel="stylesheet" href="static/css/bootstrap.css">
     </head>
 
     <body>
-        <h1>Agon</h1>
-        <p><a href="survey.html" class="btn btn-primary join-now-btn center-block">Take our survey!</a></p>
+        <header>
+            <nav class="navbar navbar-expand-md"> <!-- Denotes at which point the navigation bar expands from vertical to horizontal. medium screens is anything greater than 768px-->
+                <a class="navbar-brand" id="brand-name" href="#">Agon</a> <!-- Website branding (can include logo) -->
+                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation"> <!--  Denotes the toggle button for the collapsed menu. The piece data-toggle="collapse" defines that this will turn to a hamburger menu -->
+                        <span class="navbar-toggler-icon"></span> <!-- this creates the icon users click on to open the menu on smaller screens. -->
+                </button>
+                <div class="collapse navbar-collapse" id="main-navigation">
+                    <ul class="navbar-nav"> <!-- The class for the <ul> list element that holds the menu items. The latter are denoted with nav-item and nav-link -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about-description">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#product-section">Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     </body>
 
 
