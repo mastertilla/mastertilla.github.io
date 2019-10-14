@@ -51,6 +51,12 @@
   position: relative;
 }
 
+@media (max-width: 600px) {
+  .header-description-image {
+    background-image: url('../img/running-back-mobile.jpg')
+  }
+}
+
 .overlay {
   position: absolute;
   min-height: 100%;
