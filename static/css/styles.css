@@ -55,7 +55,7 @@
 }
 
 .dropdown-item:hover{
-  color: var(--dark-white) !important;
+  color: var(--blue-5) !important;
 }
 
 #btn-signup-menu-collapsed, #btn-login-menu-collapsed {
