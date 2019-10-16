@@ -22,7 +22,8 @@
 
 
 .nav-link,
-.navbar-brand {
+.navbar-brand,
+#contactdropdown {
   color: var(--main-white);
   cursor: pointer;
   font-family: var(--main-font);
@@ -41,6 +42,39 @@
 
 .navbar-collapse {
   justify-content: flex-end;
+}
+
+.dropdown-menu{
+  background-color: var(--blue-5) !important;
+}
+
+.dropdown-item {
+  font-family: var(--main-font) !important;
+  font-size: 14px;
+  color: var(--main-white) !important;
+}
+
+.dropdown-item:hover{
+  color: var(--dark-white) !important;
+}
+
+#btn-signup-menu-collapsed, #btn-login-menu-collapsed {
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+  margin-right: 1em !important;
+}
+
+#btn-signup-menu-collapsed {
+  background-color: var(--blue-1);
+  color: var(--blue-4);
+  margin-left: 1em !important;
+}
+
+#btn-login-menu-collapsed{
+  background-color: var(--blue-5);
+  color: var(--main-white);
+  border-color: var(--main-white);
 }
 
 /*--- Background image header ---*/
@@ -85,8 +119,30 @@
   color: var(--blue-4);
 }
 
+
 /** Mobile **/
 @media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  #btn-signup-menu-collapsed, #btn-login-menu-collapsed {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+    margin-right: 0em !important;
+    width:60%;
+    text-align: center;
+  }
+  
+  #btn-signup-menu-collapsed {
+    background-color: var(--blue-1);
+    color: var(--blue-4);
+    margin-left: 0em !important;
+  }
+  
+  #btn-login-menu-collapsed{
+    background-color: var(--blue-5);
+    color: var(--main-white);
+    border-color: var(--main-white);
+  }
+  
   .header-description-image {
     background-image: url('../img/running-back-mobile-2.jpg')
   }
