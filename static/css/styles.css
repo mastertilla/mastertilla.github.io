@@ -220,21 +220,23 @@ p {
 .methodology-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-gap: 4rem;
+  grid-gap: 2rem 4rem;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto 2rem auto;
-  margin-bottom: 6rem;
+  margin: 0 auto 0 auto;
+  margin-bottom: 0;
 }
 
 .methodology {
-  background: var(--blue-1);
   border-radius: 2px;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .methodology-description {
-  height: 150px;
+  background-color: var(--blue-1);
+  padding: 2rem;
+  height: auto;
+  text-align: center;
 }
 
 .code {
@@ -242,6 +244,7 @@ p {
   background-color: var(--blue-5);
   text-align: center;
   font-weight: 600;
+  padding: 1rem;
 }
 
 @media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
