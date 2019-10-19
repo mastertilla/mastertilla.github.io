@@ -11,6 +11,34 @@
  --dark-white: #b5b5b5;
 }
 
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--main-font);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+p {
+  font-family: var(--main-font);
+}
+
 /*--- Navigation bar ---*/
 .navbar {
   background-color: var(--blue-5);
@@ -94,6 +122,12 @@
   background: rgba(7, 11, 23, 0.2);
 }
 
+#main-logo,
+#header-text {
+  font-weight: 400;
+  line-height: 1.4;
+}
+
 #main-logo {
   padding-top: 100px;
   padding-bottom: 50px;
@@ -165,8 +199,61 @@
   }
 }
 
-/** Tablet **/
-@media only screen and (min-width : 768px) and (max-width : 1024px) {
-
+/* Methodology section */
+#methodology {
+  background: var(--main-white);
 }
 
+.methodology-section{
+  text-align: center;
+  padding: 10rem 2rem;
+}
+
+.methodology-section-header {
+  max-width: 640px;
+  margin: 0 auto 3rem auto;
+  padding-top: 2rem;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 2rem auto;
+  margin-bottom: 6rem;
+}
+
+.methodology {
+  background: var(--blue-1);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+.methodology-description {
+  height: 150px;
+}
+
+.code {
+  color: var(--main-white);
+  background-color: var(--blue-5);
+  text-align: center;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+  .methodology-section-header {
+    font-size: 20px;
+  }
+
+  .methodology-section {
+    padding: 6rem 1rem;
+  }
+
+  .methodology-grid {
+    grid-template-columns: 1fr;
+  }
+}
