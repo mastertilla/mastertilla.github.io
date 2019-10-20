@@ -205,16 +205,18 @@ p {
 }
 
 .methodology-section{
-  text-align: center;
   padding: 10rem 2rem;
 }
 
 .methodology-section-header {
-  max-width: 640px;
+  max-width: 700px;
   margin: 0 auto 3rem auto;
   padding-top: 2rem;
+  padding-bottom: 1rem;
   font-size: 32px;
   font-weight: 600;
+  text-align: center;
+  border-bottom: 0.2rem solid var(--blue-5);
 }
 
 .methodology-grid {
@@ -247,6 +249,14 @@ p {
   padding: 1rem;
   font-size: 20px;
 }
+
+.metho-number {
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  margin-right: 0.5rem;
+  border: solid;
+  border-radius: 10%;
+}
+
 
 @media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
   .methodology-section-header {
