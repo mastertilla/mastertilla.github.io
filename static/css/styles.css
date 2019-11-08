@@ -209,17 +209,17 @@ p {
 }
 
 .methodology-section-header {
-  max-width: 700px;
+  max-width: 500px;
   margin: 0 auto 3rem auto;
   padding-top: 2rem;
   padding-bottom: 1rem;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 600;
   text-align: center;
   border-bottom: 0.2rem solid var(--blue-5);
 }
 
-.methodology-grid {
+.methodology-grid, .contact-us-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 2rem 4rem;
@@ -238,7 +238,8 @@ p {
   background-color: var(--blue-1);
   padding: 2rem;
   height: auto;
-  text-align: center;
+  text-align: justify;
+  font-size: 16px;
 }
 
 .code {
@@ -260,7 +261,14 @@ p {
 
 @media only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
   .methodology-section-header {
+    max-width: 300px;
+    margin: 0 auto 3rem auto;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
     font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 0.2rem solid var(--blue-5);
   }
 
   .methodology-section {
@@ -268,6 +276,26 @@ p {
   }
 
   .methodology-grid {
+    display: grid;
     grid-template-columns: 1fr;
+    grid-gap: 1rem 4rem;
+    width: 90%;
+    max-width: 767px;
+    margin: 0 auto 0 auto;
+    margin-bottom: 0;
+  }
+
+  .methodology-description {
+    background-color: var(--blue-1);
+    padding: 2rem;
+    height: auto;
+    text-align: justify;
+    font-size: 16px;
   }
 }
+
+/* Contact Us form section */
+#contact-us {
+  background: var(--blue-5);
+}
+
