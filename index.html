@@ -1,121 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Agon - Your personal trainer</title>
+        <title>Myagon - Your personal trainer</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/css/styles.css">
         <link rel="stylesheet" href="static/css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <header>
-            <!-- Navbar definition -->
-            <nav class="navbar navbar-expand-lg"> <!-- Denotes at which point the navigation bar expands from vertical to horizontal. medium screens is anything greater than 768px-->
-                <a class="navbar-brand" id="brand-name" href="#">Agon</a> <!-- Website branding (can include logo) -->
-                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation"> <!--  Denotes the toggle button for the collapsed menu. The piece data-toggle="collapse" defines that this will turn to a hamburger menu -->
-                        <span class="navbar-toggler-icon"></span> <!-- this creates the icon users click on to open the menu on smaller screens. -->
-                </button>
-                <div class="collapse navbar-collapse" id="main-navigation">
-                    <div class="navbar-nav">
-                        <!-- General info landing page-->
-                        <a class="nav-item nav-link" href="#methodology">About</a>
-                        <a class="nav-item nav-link" href="#">Product</a>
-                        <a class="nav-item nav-link" href="#">Pricing</a>
-
-                        <!-- Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="contactdropdown" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Contact</a>
-                            <div class="dropdown-menu" aria-labelledby="contactdropdown">
-                                <a class="dropdown-item" href="#">Team</a>
-                                <a class="dropdown-item" href="#">Our story</a>
-                                <a class="dropdown-item" href="#">Contact us</a>
-                            </div>
-                        </li>
-
-                        <!-- Navbar buttons-->
-                        <div class="form-row text-center">
-                            <div class="col-12">
-                                <button id="btn-signup-menu-collapsed" class="nav-item btn my-2 my-sm-0 text-center" type="submit">Sign up</button>
-                                <button id="btn-login-menu-collapsed" class="nav-item btn my-2 my-sm-0 text-center" type="submit">Login</button>               
-                            </div>  
-                        </div>
-                    </div>
-            </nav>
-
-            <!-- Home section -->
-            <section class="header-description-image">
-                <div class="container">
-                    <div class="overlay"></div>
-                    <div class="row">
-                        <div class="col-lg-3 order-1 order-lg-1"></div>
-                        <div class="col-lg-12 order-2 order-lg-2">
-                            <h1 id="main-logo">Agon logo</h1>
-                            <p id="header-text">                       
-                                Bringing a personalised coaching experience and self-adapted training plans to athletes at all levels</p>
-                            <p><a href="#" class="btn join-btn-header join-now-btn center-block" id="join-btn-header">Join now!</a></p>
-                        </div>
-                        <div class="col-lg-3 order-3 order-lg-3"></div>
-                    </div>
+    <header>
+        <div class="overlay"></div>
+        <div class="show-desktop-video">
+            <video class="desktop" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="static/img/myagon_stock_video.mp4" type="video/mp4">
+            </video>
+        </div>  
+        <div class="show-mobile-video">
+            <video class="mobile" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="static/img/myagon_stock_video_mobile.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="container">
+            <div class="d-flex text-center align-items-center">
+                <div class="w-100" id="main-logo">
+                    <h1>Welcome to myagon!</h1>
                 </div>
-            </section>
-        </header>
+            </div>
+            <div class="d-flex text-center align-items-center">
+                <div class="w-100" id="header-text">
+                    <p>Bringing a personalised coaching experience and self-adapted training plans to athletes at all levels</p>
+                </div>
+            </div>
+            <div class="d-flex text-center align-items-center">
+                <div class="w-100">
+                    <p><a href="#" class="btn join-btn-header join-now-btn center-block" id="join-btn-header">Join now!</a></p>
+                </div>
+            </div>
+        </div>
+            </header>
         
-        <main>
-            <!-- Methodology Section -->
-            <section id="methodology" class="methology-section">
-                <h2 class="methodology-section-header">Adapting training plans to your needs</h2>
-                <div class="methodology-grid">
-                    <div class="methodology">
-                        <p class="methodology-description">Agon has been developed to
-                            provide training plans for multiple
-                            long-distance running races. These training plans can be 
-                            adapted to any athlete, from entry-level to elite runners.</p>
-                        <p class="code"><span class="metho-number">1</span>Select your distance</p>
-                    </div>
-                    <div class="methodology">
-                        <p class="methodology-description">The first objective is to identify your
-                            starting point, in order to bencharm
-                            your progress along the way. This is
-                            achieved by performing activities like
-                            interval runs, long runs, etc.</p>
-                        <p class="code"><span class="metho-number">2</span>Get your basics right!</p>
-                    </div>
-                    <div class="methodology">
-                            <p class="methodology-description">The program is aimed at getting you in
-                                    your best shape for your “A” race, or
-                                    your main race of the year. Other races
-                                    will be taken into account to develop
-                                    the plan.</p>
-                            <p class="code"><span class="metho-number">3</span>Select your "A" race</p>
-                        </div>
-                        <div class="methodology">
-                                <p class="methodology-description">No training plan is a magic solution,
-                                        you need to follow it and be
-                                        accountable. By providing feedback on
-                                        the sessions, the training plan will
-                                        automatically adapt.</p>
-                                <p class="code"><span class="metho-number">4</span>Follow the plan</p>
-                            </div>
-            </section>
-
-            <section id="contact-us" class="contact-us-section">
-                <div class="contact-us-grid">
-                    <div class="contact-us-div">
-                        <p class="contact-us-text">
-                            Hello World
-                        </p>
-                    </div>
-                    <div class="contact-us-div">
-                        <form class="contact-us-form">
-                            <button id="btn-signup-menu-collapsed" class="nav-item btn my-2 my-sm-0 text-center" type="submit">Sign up</button>
-                        </form>
-                    </div>
-
-                </div>
-            </section>  
-        </main>
 
     <script src="static/js/main.js"></script>
     <script src="static/js/jquery-3.4.1.min.js"></script>
