@@ -1,49 +1,1303 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Daniel Montilla Navas</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/styles.css">
-        <link rel="stylesheet" href="static/css/bootstrap.css">
-    </head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daniel Montilla - AI-Native FullStack Engineer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    <body>
-        <header>
-            <!-- Navbar definition -->
-            <nav class="navbar navbar-expand-lg"> <!-- Denotes at which point the navigation bar expands from vertical to horizontal. medium screens is anything greater than 768px-->
-                <a class="navbar-brand" id="brand-name" href="#"></a> <!-- Website branding (can include logo) -->
-                <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation"> <!--  Denotes the toggle button for the collapsed menu. The piece data-toggle="collapse" defines that this will turn to a hamburger menu -->
-                        <span class="navbar-toggler-icon"></span> <!-- this creates the icon users click on to open the menu on smaller screens. -->
-                </button>
-                <div class="collapse navbar-collapse" id="main-navigation">
-                    <div class="navbar-nav">
-                        <!-- General info landing page-->
-                        <a class="nav-item nav-link" href="#methodology">About</a>
-                        <a class="nav-item nav-link" href="#">Contact</a>
-                        <a class="nav-item nav-link" href="#">Work</a>
-                        <!-- Navbar buttons-->
-                        <div class="form-row text-center">
-                            <div class="col-12">
-                                <button id="btn-signup-menu-collapsed" class="nav-item btn my-2 my-sm-0 text-center" type="submit">Sign up</button>
-                                <button id="btn-login-menu-collapsed" class="nav-item btn my-2 my-sm-0 text-center" type="submit">Login</button>               
-                            </div>  
-                        </div>
-                    </div>
-            </nav>
-        </header>
-        
-        <main>
-            <!-- About me Section -->
-            <section id="methodology" class="methology-section">
-                <h2 class="methodology-section-header">Personal website coming soon!</h2>
-            </section>
-        </main>
+      :root {
+        --bg-dark: #0a0a0a;
+        --bg-darker: #000000;
+        --text-primary: #ffffff;
+        --text-secondary: #a0a0a0;
+        --accent: #00ff88;
+        --accent-dark: #00cc6a;
+        --danger: #ff4757;
+        --warning: #ffa502;
+      }
 
-    <script src="static/js/main.js"></script>
-    <script src="static/js/jquery-3.4.1.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    </body>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-primary);
+        line-height: 1.4;
+        overflow-x: hidden;
+      }
 
+      /* Custom cursor */
+      body {
+        cursor: none;
+      }
 
+      .cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        transition: all 0.1s ease;
+        mix-blend-mode: difference;
+      }
+
+      .cursor.hover {
+        transform: scale(2);
+        background: var(--accent);
+        opacity: 0.8;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 1000;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      nav .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 0;
+      }
+
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.2s ease;
+        position: relative;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: var(--accent);
+      }
+
+      nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover::after,
+      nav a.active::after {
+        width: 80%;
+      }
+
+      /* Hero Section */
+      #home {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background: var(--bg-darker);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(3rem, 8vw, 8rem);
+        font-weight: 900;
+        line-height: 0.9;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--text-primary) 0%,
+          var(--accent) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-transform: uppercase;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        font-weight: 300;
+      }
+
+      .hero-description {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin-bottom: 3rem;
+        line-height: 1.6;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--accent);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      .hero-cta:hover::before {
+        left: 0;
+      }
+
+      .hero-cta:hover {
+        color: var(--bg-dark);
+        transform: translateY(-2px);
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        width: 50px;
+        height: 50px;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--accent);
+        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 0.3s ease;
+        z-index: -1;
+      }
+
+      .social-link:hover::before {
+        transform: scale(1);
+      }
+
+      .social-link:hover {
+        color: var(--bg-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+      }
+
+      /* Grid background effect */
+      .grid-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            rgba(0, 255, 136, 0.1) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: gridMove 20s linear infinite;
+        opacity: 0.3;
+      }
+
+      @keyframes gridMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      /* Sections */
+      section {
+        min-height: 100vh;
+        padding: 6rem 2rem;
+        position: relative;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      section h2 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        position: relative;
+      }
+
+      section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: var(--accent);
+      }
+
+      /* About Section */
+      #about {
+        background: var(--bg-dark);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .about-image {
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 1;
+        background: linear-gradient(45deg, var(--accent), var(--warning));
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .about-image:hover::before {
+        background: rgba(0, 0, 0, 0);
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      /* Stats */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .stat:hover {
+        border-color: var(--accent);
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* CV Section */
+      #cv {
+        background: var(--bg-darker);
+      }
+
+      .cv-timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .cv-timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--accent);
+      }
+
+      .cv-item {
+        position: relative;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .cv-item::before {
+        content: '';
+        position: absolute;
+        left: -2.5rem;
+        top: 2rem;
+        width: 12px;
+        height: 12px;
+        background: var(--accent);
+        border: 3px solid var(--bg-darker);
+        border-radius: 50%;
+      }
+
+      .cv-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--accent);
+        transform: translateX(10px);
+      }
+
+      .cv-item h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .cv-item .company {
+        font-size: 1.1rem;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .cv-item .date {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+      }
+
+      .cv-item p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .skill-category {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .skill-category:hover {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .skill-category h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--accent);
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .skill-tag {
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .skill-tag:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      /* Projects Section */
+      #projects {
+        background: var(--bg-dark);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--warning));
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+      }
+
+      .project-content {
+        padding: 2rem;
+      }
+
+      .project-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .project-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .tech-tag {
+        padding: 0.25rem 0.75rem;
+        background: rgba(0, 255, 136, 0.1);
+        color: var(--accent);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        padding: 0.75rem 1.5rem;
+        background: transparent;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--accent);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      .project-link:hover::before {
+        left: 0;
+      }
+
+      .project-link:hover {
+        color: var(--bg-dark);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .cursor {
+          display: none;
+        }
+
+        body {
+          cursor: auto;
+        }
+
+        nav .container {
+          padding: 0 1rem;
+        }
+
+        nav ul {
+          gap: 0;
+        }
+
+        nav a {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .about-image {
+          max-width: 250px;
+          margin: 0 auto;
+          font-size: 5rem;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cv-timeline {
+          padding-left: 1rem;
+        }
+
+        .cv-item::before {
+          left: -1.5rem;
+        }
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom cursor -->
+    <div class="cursor"></div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <div class="logo">DM</div>
+        <ul>
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#cv" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Work</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+      <div class="grid-bg"></div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Daniel Montilla</h1>
+          <p class="hero-subtitle">AI-Native FullStack Engineer</p>
+          <p class="hero-description">
+            I build scalable and production-ready AI native applications,
+            including backend, frontend and devops pipelines. Passionate about
+            clean code, modern technologies, and ensuring AI systems are
+            reliable for the user
+          </p>
+          <div class="hero-actions">
+            <button class="hero-cta" onclick="copyEmail()" id="emailBtn">
+              Get In Touch 📧
+            </button>
+            <div class="social-links">
+              <a
+                href="https://www.linkedin.com/in/daniel-montilla-navas/"
+                target="_blank"
+                class="social-link"
+                title="LinkedIn"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/mastertilla"
+                target="_blank"
+                class="social-link"
+                title="GitHub"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2 class="fade-in">About</h2>
+        <div class="about-grid fade-in">
+          <div class="about-image">🤖</div>
+          <div class="about-text">
+            <p>
+              <strong>Hey!</strong> I'm Daniel, an AI engineer who builds
+              machine learning systems that actually work in production.
+            </p>
+            <p>
+              <strong>7+ years</strong> turning complex ML problems into
+              scalable solutions. From fraud detection algorithms to AI
+              chatbots, I've shipped systems serving millions of users across
+              London, Madrid, and now Abu Dhabi.
+            </p>
+            <p>
+              <strong>Currently architecting AI solutions</strong> at Liquidity
+              Capital, leading everything from RAG implementations to serverless
+              ML deployments. I've managed teams, sat at executive tables, and
+              know the difference between research code and production-ready
+              systems.
+            </p>
+            <p>
+              <strong>I'm passionate about the entire ML lifecycle</strong> — from business problem
+              to deployed model. When I'm not wrangling databases or optimizing
+              inference pipelines, I'm probably exploring the latest in MLOps
+              tooling or mentoring the next generation of ML engineers.
+            </p>
+          </div>
+        </div>
+
+        <div class="stats fade-in">
+          <div class="stat">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">AI Projects in production</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">7+</div>
+            <div class="stat-label">Years Exp</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">500k+</div>
+            <div class="stat-label">Lines of Code</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Innovation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="cv">
+      <div class="container">
+        <h2 class="fade-in">Experience</h2>
+
+        <div class="cv-timeline fade-in">
+          <div class="cv-item">
+            <h3>Senior Machine Learning Engineer</h3>
+            <div class="company">Liquidity Capital Ltd, Abu Dhabi</div>
+            <div class="date">Sep 2024 - Present</div>
+            <p>
+              Leading production lifecycle of AI-native applications including
+              chatbot development with RAG solutions (LangChain) and agentic
+              frameworks. Architecting serverless AI solutions using AWS Lambda
+              and managing multiple databases (ElasticSearch, Neo4J, MongoDB,
+              Postgres).
+            </p>
+          </div>
+
+          <div class="cv-item">
+            <h3>MLOps & Data Lead</h3>
+            <div class="company">Newtral, Madrid</div>
+            <div class="date">Feb 2024 - Jun 2024</div>
+            <p>
+              Developed automated Data Platform for ETL pipelines using
+              Terraform, Python, and AWS ECS. Established production deployment
+              strategy for LLM models with ONNX optimization and TritonServer
+              deployment. Enhanced cloud security for production environments.
+            </p>
+          </div>
+
+          <div class="cv-item">
+            <h3>Head of AI & Core Backend Services</h3>
+            <div class="company">Correcto, Madrid</div>
+            <div class="date">Jan 2023 - Feb 2024</div>
+            <p>
+              Executive Management team member managing AI team of 5 Data
+              Scientists and engineers. Responsible for AI pipeline production
+              deployment as microservices (FastAPI, LLMs, CI/CD) and
+              infrastructure management (Kubernetes, GCP, Terraform).
+            </p>
+          </div>
+
+          <div class="cv-item">
+            <h3>Tech Lead / Sr Machine Learning Engineer</h3>
+            <div class="company">Intelygenz, Madrid</div>
+            <div class="date">Oct 2021 - Dec 2022</div>
+            <p>
+              Delivered end-to-end ML projects for clients in production using
+              Kubernetes. Led ML projects using NLP techniques (Spacy,
+              transformers, ONNX) with gRPC APIs. Established ML Engineer career
+              program and Python coding standards company-wide.
+            </p>
+          </div>
+
+          <div class="cv-item">
+            <h3>Senior Data Scientist</h3>
+            <div class="company">Gaia, London</div>
+            <div class="date">Aug 2020 - Apr 2021</div>
+            <p>
+              Developed algorithms for in-vitro fertilisation outcomes
+              prediction and computer vision optimization for IVF process.
+              Managed data strategy and vision, deployed ML API services using
+              Django REST and AWS Cloud with Terraform.
+            </p>
+          </div>
+        </div>
+
+        <div class="skills-grid fade-in">
+          <div class="skill-category">
+            <h4>Machine Learning</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">HuggingFace</span>
+              <span class="skill-tag">Scikit-Learn</span>
+              <span class="skill-tag">ONNX</span>
+              <span class="skill-tag">LangChain</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Backend & APIs</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">FastAPI</span>
+              <span class="skill-tag">Django</span>
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">gRPC</span>
+              <span class="skill-tag">Golang</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Data & Databases</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">ElasticSearch</span>
+              <span class="skill-tag">Neo4J</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">NumPy</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>DevOps & Cloud</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS</span>
+              <span class="skill-tag">GCP</span>
+              <span class="skill-tag">Azure</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Kubernetes</span>
+              <span class="skill-tag">Terraform</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="fade-in">Featured Work</h2>
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-content">
+              <h3>E-Commerce Platform</h3>
+              <p>
+                Full-stack e-commerce solution with real-time inventory
+                management, payment processing, and analytics dashboard. Built
+                to handle high traffic with 99.9% uptime.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Stripe</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">Live Demo</a>
+                <a href="#" class="project-link">Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-content">
+              <h3>Real-time Chat App</h3>
+              <p>
+                WebSocket-powered chat application with file sharing, emoji
+                reactions, and room management. Supports 1000+ concurrent users
+                with message encryption.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Socket.io</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">JWT</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">Live Demo</a>
+                <a href="#" class="project-link">Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-content">
+              <h3>Analytics Dashboard</h3>
+              <p>
+                Interactive data visualization platform with custom charts,
+                real-time updates, and export functionality. Processes millions
+                of data points efficiently.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">D3.js</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">FastAPI</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">Live Demo</a>
+                <a href="#" class="project-link">Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-content">
+              <h3>Open Source CLI Tool</h3>
+              <p>
+                Command-line utility for developers that streamlines project
+                setup and deployment. Downloaded 50k+ times with active
+                community contributions.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Commander.js</span>
+                <span class="tech-tag">Inquirer</span>
+                <span class="tech-tag">NPM</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">NPM</a>
+                <a href="#" class="project-link">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Custom cursor
+      const cursor = document.querySelector('.cursor')
+      const hoverElements = document.querySelectorAll(
+        'a, button, .project-card, .cv-item, .stat'
+      )
+
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px'
+        cursor.style.top = e.clientY + 'px'
+      })
+
+      hoverElements.forEach((el) => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'))
+        el.addEventListener('mouseleave', () =>
+          cursor.classList.remove('hover')
+        )
+      })
+
+      // Smooth scrolling
+      document.querySelectorAll('.nav-link, .hero-cta').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault()
+          const targetId = link.getAttribute('href')
+          const targetSection = document.querySelector(targetId)
+          targetSection.scrollIntoView({ behavior: 'smooth' })
+        })
+      })
+
+      // Active navigation
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section')
+        const navLinks = document.querySelectorAll('.nav-link')
+
+        let current = ''
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id')
+          }
+        })
+
+        navLinks.forEach((link) => {
+          link.classList.remove('active')
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active')
+          }
+        })
+      })
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+          }
+        })
+      }, observerOptions)
+
+      document.querySelectorAll('.fade-in').forEach((el) => {
+        observer.observe(el)
+      })
+
+      // Parallax effect for grid background
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset
+        const grid = document.querySelector('.grid-bg')
+        if (grid) {
+          grid.style.transform = `translate(${scrolled * 0.1}px, ${
+            scrolled * 0.1
+          }px)`
+        }
+      })
+
+      // Dynamic typing effect for hero subtitle
+      const subtitle = document.querySelector('.hero-subtitle')
+      const roles = [
+        'Gen AI Engineer',
+        'AI Systems Architect',
+        'Machine Learning Engineer',
+        'FullStack Developer',
+      ]
+      let currentRole = 0
+      let currentChar = 0
+      let isDeleting = false
+
+      function typeRole() {
+        const current = roles[currentRole]
+
+        if (isDeleting) {
+          subtitle.textContent = current.substring(0, currentChar - 1)
+          currentChar--
+
+          if (currentChar === 0) {
+            isDeleting = false
+            currentRole = (currentRole + 1) % roles.length
+            setTimeout(typeRole, 500)
+          } else {
+            setTimeout(typeRole, 50)
+          }
+        } else {
+          subtitle.textContent = current.substring(0, currentChar + 1)
+          currentChar++
+
+          if (currentChar === current.length) {
+            isDeleting = true
+            setTimeout(typeRole, 2000)
+          } else {
+            setTimeout(typeRole, 100)
+          }
+        }
+      }
+
+      // Start typing effect after page load
+      setTimeout(typeRole, 1000)
+
+      // Add glitch effect to main heading on hover
+      const mainHeading = document.querySelector('.hero-content h1')
+      const originalText = mainHeading.textContent
+
+      mainHeading.addEventListener('mouseenter', () => {
+        let glitchInterval = setInterval(() => {
+          const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?'
+          let glitchedText = ''
+
+          for (let i = 0; i < originalText.length; i++) {
+            if (Math.random() < 0.3) {
+              glitchedText +=
+                glitchChars[Math.floor(Math.random() * glitchChars.length)]
+            } else {
+              glitchedText += originalText[i]
+            }
+          }
+
+          mainHeading.textContent = glitchedText
+        }, 50)
+
+        setTimeout(() => {
+          clearInterval(glitchInterval)
+          mainHeading.textContent = originalText
+        }, 300)
+      })
+
+      // Enhanced hover effects for project cards
+      document.querySelectorAll('.project-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect()
+          const x = e.clientX - rect.left
+          const y = e.clientY - rect.top
+
+          const centerX = rect.width / 2
+          const centerY = rect.height / 2
+
+          const rotateX = (y - centerY) / 10
+          const rotateY = (centerX - x) / 10
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`
+        })
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform =
+            'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)'
+        })
+      })
+
+      // Matrix rain effect (subtle background animation)
+      function createMatrixRain() {
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d')
+
+        canvas.style.position = 'fixed'
+        canvas.style.top = '0'
+        canvas.style.left = '0'
+        canvas.style.width = '100%'
+        canvas.style.height = '100%'
+        canvas.style.pointerEvents = 'none'
+        canvas.style.zIndex = '1'
+        canvas.style.opacity = '0.05'
+
+        document.body.appendChild(canvas)
+
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+
+        const chars = '01'
+        const fontSize = 14
+        const columns = Math.floor(canvas.width / fontSize)
+        const drops = new Array(columns).fill(0)
+
+        function draw() {
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
+          ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+          ctx.fillStyle = '#00ff88'
+          ctx.font = `${fontSize}px monospace`
+
+          for (let i = 0; i < drops.length; i++) {
+            const char = chars[Math.floor(Math.random() * chars.length)]
+            const x = i * fontSize
+            const y = drops[i] * fontSize
+
+            ctx.fillText(char, x, y)
+
+            if (y > canvas.height && Math.random() > 0.975) {
+              drops[i] = 0
+            }
+            drops[i]++
+          }
+        }
+
+        setInterval(draw, 100)
+
+        window.addEventListener('resize', () => {
+          canvas.width = window.innerWidth
+          canvas.height = window.innerHeight
+        })
+      }
+
+      // Initialize matrix rain after page load
+      setTimeout(createMatrixRain, 2000)
+
+      // Email copy functionality
+      function copyEmail() {
+        const email = 'daniel.montilla.navas@gmail.com'
+        const btn = document.getElementById('emailBtn')
+        const originalText = btn.innerHTML
+
+        navigator.clipboard
+          .writeText(email)
+          .then(() => {
+            btn.innerHTML = 'Email Copied! ✅'
+
+            setTimeout(() => {
+              btn.innerHTML = originalText
+            }, 3000)
+          })
+          .catch((err) => {
+            console.error('Failed to copy email: ', err)
+            btn.innerHTML = 'Copy failed ❌'
+
+            setTimeout(() => {
+              btn.innerHTML = originalText
+            }, 3000)
+          })
+      }
+    </script>
+  </body>
 </html>
