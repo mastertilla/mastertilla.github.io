@@ -3,6 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+  const GA_MEASUREMENT_ID = 'G-Y7WGHH2R58'; // <-- replace with your GA ID (e.g. G-AB12C3D4E5)
+    </script>
+    
+    <!-- Load gtag.js (safe to load early; will not send data until consent is granted) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7WGHH2R58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+    
+      // Consent Mode v2: start with everything denied until the user chooses
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'denied',
+        'personalization_storage': 'denied',
+        'security_storage': 'granted' // usually OK to keep granted
+      });
+    
+      // We will only call gtag('config', GA_MEASUREMENT_ID) after user clicks "Accept"
+    </script>
     <title>Daniel Montilla - AI-Native FullStack Engineer</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
@@ -707,6 +730,111 @@
       }
     </style>
   </head>
+  <!-- Consent Banner -->
+  <style>
+    .cookie-banner {
+      position: fixed; inset-inline: 0; bottom: 0;
+      display: none; /* shown by JS if no prior choice */
+      gap: 1rem; align-items: start;
+      background: rgba(0,0,0,0.9); color: #fff;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 1rem 1.25rem; z-index: 2000;
+      backdrop-filter: blur(10px);
+    }
+    .cookie-banner__content { max-width: 900px; line-height: 1.5; }
+    .cookie-banner__actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .btn-cookie {
+      border: 1px solid var(--accent); color: var(--accent);
+      background: transparent; padding: .6rem 1rem; cursor: pointer;
+      text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
+    }
+    .btn-cookie--primary {
+      background: var(--accent); color: #0a0a0a; border-color: var(--accent);
+    }
+    .cookie-manage {
+      position: fixed; right: 1rem; bottom: 5rem; z-index: 1999;
+      background: rgba(0,0,0,0.7); color: var(--accent);
+      border: 1px solid var(--accent); padding: .4rem .7rem; cursor: pointer;
+      font-size: .8rem; text-transform: uppercase; letter-spacing: .05em;
+      display: none; /* shown after any choice to reopen banner */
+    }
+  </style>
+  
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie Consent">
+    <div class="cookie-banner__content">
+      <strong>Analytics cookies</strong> — I’d like to use cookies to measure visits (page views, referrers, country, device). 
+      <br/>You can accept or reject. You can change this later via “Cookie Settings”.
+    </div>
+    <div class="cookie-banner__actions">
+      <button class="btn-cookie btn-cookie--primary" id="cookieAccept">Accept</button>
+      <button class="btn-cookie" id="cookieReject">Reject</button>
+    </div>
+  </div>
+  
+  <button class="cookie-manage" id="cookieManageBtn" aria-label="Cookie Settings">Cookie Settings</button>
+  
+  <script>
+    (function(){
+      const KEY = 'ga_consent_choice'; // 'granted' | 'denied'
+      const banner = document.getElementById('cookieBanner');
+      const manageBtn = document.getElementById('cookieManageBtn');
+      const existing = localStorage.getItem(KEY);
+  
+      function applyConsent(choice) {
+        const granted = choice === 'granted';
+        // Update Consent Mode
+        gtag('consent', 'update', {
+          'ad_storage': granted ? 'granted' : 'denied',
+          'ad_user_data': granted ? 'granted' : 'denied',
+          'ad_personalization': granted ? 'granted' : 'denied',
+          'analytics_storage': granted ? 'granted' : 'denied',
+          'functionality_storage': granted ? 'granted' : 'denied',
+          'personalization_storage': granted ? 'granted' : 'denied',
+        });
+  
+        // If granted and GA not yet initialized, initialize and send page_view
+        if (granted && !window.__gaInitialized) {
+          window.__gaInitialized = true;
+          if (window.GA_MEASUREMENT_ID) {
+            gtag('js', new Date());
+            // send_page_view true by default; explicit call to be clear
+            gtag('config', window.GA_MEASUREMENT_ID, { send_page_view: true });
+          }
+        }
+      }
+  
+      // First load: show banner only if no prior choice
+      if (!existing) {
+        banner.style.display = 'grid';
+        banner.style.gridTemplateColumns = '1fr auto';
+      } else {
+        // Apply stored choice silently
+        applyConsent(existing);
+        // Show “Cookie Settings” button so user can change later
+        manageBtn.style.display = 'inline-block';
+      }
+  
+      // Handle buttons
+      document.getElementById('cookieAccept').addEventListener('click', function(){
+        localStorage.setItem(KEY, 'granted');
+        applyConsent('granted');
+        banner.style.display = 'none';
+        manageBtn.style.display = 'inline-block';
+      });
+  
+      document.getElementById('cookieReject').addEventListener('click', function(){
+        localStorage.setItem(KEY, 'denied');
+        applyConsent('denied');
+        banner.style.display = 'none';
+        manageBtn.style.display = 'inline-block';
+      });
+  
+      // Reopen banner to change choice
+      manageBtn.addEventListener('click', function(){
+        banner.style.display = 'grid';
+      });
+    })();
+  </script>
   <body>
     <!-- Custom cursor -->
     <div class="cursor"></div>
